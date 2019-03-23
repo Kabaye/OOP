@@ -25,6 +25,15 @@ public class Airline {
                 " units}";
     }
 
+    public String getFleetUnits()
+    {
+        StringBuilder buffer  = new StringBuilder();
+        for (AbstractAircraft elem: fleet) {
+            buffer.append(elem.toString() + "\n");
+        }
+        return buffer.toString();
+    }
+
     public List<AbstractAircraft> getAirFleet() {
         List<AbstractAircraft> copyOfFleet;
         copyOfFleet = (List<AbstractAircraft>) ((ArrayList<AbstractAircraft>) fleet).clone();

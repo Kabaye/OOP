@@ -2,16 +2,23 @@ package by.courses.java.oop.Airline.Aircraft;
 
 public class CargoAircraft extends AbstractAircraft {
     private Integer cargoCompartmentVolume;
+    private Integer capacity; //грузоподъемность
 
-    public CargoAircraft(Integer range, Integer capacity, Integer maximumSpeed, String model, String producer, Integer cargoCompartmentVolume) {
-        super(range, capacity, maximumSpeed, model, producer);
+    public CargoAircraft(Integer range, Integer maximumSpeed, String model, String producer, Integer cargoCompartmentVolume, Integer capacity) {
+        super(range, maximumSpeed, model, producer);
         this.cargoCompartmentVolume = cargoCompartmentVolume;
+        this.capacity = capacity;
+    }
+
+    public Integer getCapacity() {
+        return capacity;
     }
 
     @Override
     public String toString() {
         return super.toString() +
-                " cargo compartment volume = " + cargoCompartmentVolume +
+                "capacity = " + capacity +
+                " t, cargo compartment volume = " + cargoCompartmentVolume +
                 " m^3}";
     }
 

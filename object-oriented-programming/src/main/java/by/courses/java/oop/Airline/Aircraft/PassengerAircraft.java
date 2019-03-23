@@ -4,8 +4,8 @@ public class PassengerAircraft extends AbstractAircraft {
     private Integer firstClassSeats;
     private Integer secondClassSeats;
 
-    public PassengerAircraft(Integer range, Integer capacity, Integer maximumSpeed, String model, String producer, Integer firstClassSeats, Integer secondClassSeats) {
-        super(range, capacity, maximumSpeed, model, producer);
+    public PassengerAircraft(Integer range, Integer maximumSpeed, String model, String producer, Integer firstClassSeats, Integer secondClassSeats) {
+        super(range, maximumSpeed, model, producer);
         this.firstClassSeats = firstClassSeats;
         this.secondClassSeats = secondClassSeats;
     }
