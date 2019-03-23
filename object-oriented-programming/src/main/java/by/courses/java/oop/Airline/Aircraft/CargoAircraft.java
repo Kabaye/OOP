@@ -3,8 +3,8 @@ package by.courses.java.oop.Airline.Aircraft;
 public class CargoAircraft extends AbstractAircraft {
     private Integer cargoCompartmentVolume;
 
-    public CargoAircraft(Integer range, Integer capacity, Integer maximumSpeed, String name, Float fuselageWidth, Integer length, Integer cargoCompartmentVolume) {
-        super(range, capacity, maximumSpeed, name, fuselageWidth, length);
+    public CargoAircraft(Integer range, Integer capacity, Integer maximumSpeed, String model, String producer, Integer cargoCompartmentVolume) {
+        super(range, capacity, maximumSpeed, model, producer);
         this.cargoCompartmentVolume = cargoCompartmentVolume;
     }
 

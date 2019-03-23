@@ -4,17 +4,15 @@ public abstract class AbstractAircraft {
     private Integer range;
     private Integer capacity; //грузоподъемность
     private Integer maximumSpeed;
-    private String name;
-    private Float fuselageWidth;
-    private Integer length;
+    private String model;
+    private PlaneProducer producer;
 
-    public AbstractAircraft(Integer range, Integer capacity, Integer maximumSpeed, String name, Float fuselageWidth, Integer length) {
+    public AbstractAircraft(Integer range, Integer capacity, Integer maximumSpeed, String model, String producer) {
         this.range = range;
+        this.producer = PlaneProducer.valueOf(producer.toUpperCase());
         this.capacity = capacity;
         this.maximumSpeed = maximumSpeed;
-        this.name = name;
-        this.fuselageWidth = fuselageWidth;
-        this.length = length;
+        this.model = model;
     }
 
     public Integer getRange() {
@@ -29,27 +27,18 @@ public abstract class AbstractAircraft {
         return maximumSpeed;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public Float getFuselageWidth() {
-        return fuselageWidth;
-    }
-
-    public Integer getLength() {
-        return length;
+    public String getModel() {
+        return model;
     }
 
     @Override
     public String toString() {
-        return "plane{" +
-                "name = '" + name + '\'' +
+        return "plane {" +
+                "producer = '" + producer.toString().toLowerCase() + '\'' +
+                ", model = '" + model + '\'' +
                 ", range = " + range +
                 " km, capacity = " + capacity +
                 " t, maximum speed = " + maximumSpeed +
-                " kmh, fuselage width = " + fuselageWidth +
-                " m, length = " + length +
-                " m, ";
+                " kmh, ";
     }
 }
