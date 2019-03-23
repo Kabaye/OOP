@@ -25,7 +25,7 @@ public class Airline {
                 " units}";
     }
 
-    public String getFleetUnits()
+    public String getStringOfFleetUnits()
     {
         StringBuilder buffer  = new StringBuilder();
         for (AbstractAircraft elem: fleet) {
