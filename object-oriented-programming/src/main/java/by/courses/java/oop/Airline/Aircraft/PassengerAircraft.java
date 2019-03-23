@@ -20,8 +20,8 @@ public class PassengerAircraft extends AbstractAircraft {
 
     @Override
     public String toString() {
-        return  super.toString()+"firstClassSeats = " + firstClassSeats +
-                ", secondClassSeats = " + secondClassSeats +
+        return  super.toString()+"first class seats = " + firstClassSeats +
+                ", second class seats = " + secondClassSeats +
                 "}";
     }
 }

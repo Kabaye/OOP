@@ -46,10 +46,10 @@ public abstract class AbstractAircraft {
         return "plane{" +
                 "name = '" + name + '\'' +
                 ", range = " + range +
-                "km, capacity = " + capacity +
-                "t, maximumSpeed = " + maximumSpeed +
-                "kmh, fuselageWidth = " + fuselageWidth +
-                "m, length=" + length +
-                "m, ";
+                " km, capacity = " + capacity +
+                " t, maximum speed = " + maximumSpeed +
+                " kmh, fuselage width = " + fuselageWidth +
+                " m, length = " + length +
+                " m, ";
     }
 }

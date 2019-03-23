@@ -11,8 +11,8 @@ public class CargoAircraft extends AbstractAircraft {
     @Override
     public String toString() {
         return super.toString() +
-                " cargoCompartmentVolume = " + cargoCompartmentVolume +
-                "m^3}";
+                " cargo compartment volume = " + cargoCompartmentVolume +
+                " m^3}";
     }
 
     public Integer getCargoCompartmentVolume() {
