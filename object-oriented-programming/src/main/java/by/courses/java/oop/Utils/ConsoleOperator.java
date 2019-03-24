@@ -5,10 +5,7 @@ import by.courses.java.oop.Airline.Aircraft.CargoAircraft;
 import by.courses.java.oop.Airline.Aircraft.PassengerAircraft;
 import by.courses.java.oop.Airline.Airline;
 
-import java.util.Comparator;
-import java.util.List;
-import java.util.Scanner;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class ConsoleOperator {
     public final static String BEGINNING = "Hello! Lets start! Our commands is:\n" +
@@ -110,8 +107,9 @@ public class ConsoleOperator {
                     break;
                 }
 
-            } catch (NumberFormatException exc) {
+            } catch (InputMismatchException exc) {
                 System.out.println("Please, write just numbers!");
+                input.nextLine();
             }
     }
 
