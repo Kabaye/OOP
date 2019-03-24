@@ -49,6 +49,15 @@ public class Airline {
         return locationCountry;
     }
 
+    public AbstractAircraft findAircraftByParameters(int minRange, int maxRange, int minSpeed, int maxSpeed){
+        for (AbstractAircraft elem: fleet) {
+            if (elem.getRange()>=minRange && elem.getRange()<=maxRange && elem.getMaximumSpeed()>=minSpeed && elem.getMaximumSpeed()<=maxSpeed){
+                return elem;
+            }
+        }
+        return null;
+    }
+
     public boolean addPlaneToPark(AbstractAircraft aircraft) {
         if (aircraft != null) {
             fleet.add(aircraft);
