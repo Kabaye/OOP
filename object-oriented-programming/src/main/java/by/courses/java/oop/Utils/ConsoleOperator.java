@@ -8,12 +8,12 @@ import by.courses.java.oop.Airline.Airline;
 import java.util.*;
 
 public class ConsoleOperator {
-    public final static String BEGINNING = "Hello! Lets start! Our commands is:\n" +
-            "1 --- print info about airline;\n" +
+    public final static String BEGINNING = "Hello! Lets start!";
+    public final static String COMMANDS = "1 --- print info about airline;\n" +
             "2 --- count total capacity and amount of seats;\n" +
             "3 --- sort airline's aircrafts by range;\n" +
             "4 --- search menu;\n" +
-            "5 --- exit;\n";
+            "5 --- exit;";
     public final static String SEARCH = "Please, write min and max speed and range, we will find aircraft, which approach selected parameters";
 
     private Airline airline;
@@ -24,7 +24,7 @@ public class ConsoleOperator {
 
     public void workWithConsole() {
         Scanner input = new Scanner(System.in);
-        System.out.print(BEGINNING);
+        System.out.println(BEGINNING + "\n" + COMMANDS);
         String line;
         StringTokenizer tokenizer;
         boolean closeConsole = false;
