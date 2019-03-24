@@ -22,7 +22,8 @@ public class Main {
         airline.addPlaneToPark(new CargoAircraft(7400,750, "A330-200F","Airbus", 2000,70000));
         airline.addPlaneToPark(new CargoAircraft(7800,780, "A330P2F","Airbus", 1700,60000));
 
-        ConsoleOperator operator = new ConsoleOperator(airline);
-        operator.workWithConsole();
+        new ConsoleOperator(airline)
+                .workWithConsole();
+
     }
 }
