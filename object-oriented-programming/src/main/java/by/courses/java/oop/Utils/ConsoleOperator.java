@@ -17,6 +17,7 @@ public class ConsoleOperator {
             "3 --- sort airline's aircrafts by range;\n" +
             "4 --- search menu;\n" +
             "5 --- exit;\n";
+    public final static String SEARCH = "Please, write min and max speed and range, we will find aircraft, which approach selected parameters";
 
     private Airline airline;
 
@@ -33,23 +34,29 @@ public class ConsoleOperator {
         if (airline != null)
             while (!closeConsole) {
                 line = input.nextLine();
-                tokenizer = new StringTokenizer(line);
-                switch (tokenizer.nextToken()) {
-                    case "1": {
-                        print();
-                        break;
-                    }
-                    case "2": {
-                        countTotal();
-                        break;
-                    }
-                    case "3": {
-                        sort();
-                        break;
-                    }
-                    case "5": {
-                        closeConsole = true;
-                        break;
+                if (!line.equals("")) {
+                    tokenizer = new StringTokenizer(line);
+                    switch (tokenizer.nextToken()) {
+                        case "1": {
+                            print();
+                            break;
+                        }
+                        case "2": {
+                            countTotal();
+                            break;
+                        }
+                        case "3": {
+                            sort();
+                            break;
+                        }
+                        case "4": {
+                            search(input);
+                            break;
+                        }
+                        case "5": {
+                            closeConsole = true;
+                            break;
+                        }
                     }
                 }
             }
@@ -61,7 +68,7 @@ public class ConsoleOperator {
     }
 
     private void countTotal() {
-        Integer capacity = 0, amountOfSeats = 0;
+        int capacity = 0, amountOfSeats = 0;
         for (AbstractAircraft elem : airline.getAirFleet()) {
             if (elem instanceof PassengerAircraft) {
                 amountOfSeats += ((PassengerAircraft) elem).getFirstClassSeats() + ((PassengerAircraft) elem).getSecondClassSeats();
@@ -75,9 +82,37 @@ public class ConsoleOperator {
     private void sort() {
         List<AbstractAircraft> aircrafts = airline.getAirFleet();
         aircrafts.sort(Comparator.comparing(AbstractAircraft::getRange));
-        for (AbstractAircraft elem: aircrafts) {
+        for (AbstractAircraft elem : aircrafts) {
             System.out.println(elem);
         }
+    }
+
+    private void search(Scanner input) {
+        System.out.println(SEARCH);
+
+        int minRange, maxRange, minSpeed, maxSpeed;
+        while (true)
+            try {
+                System.out.print("min range: ");
+                minRange = input.nextInt();
+                System.out.print("max range: ");
+                maxRange = input.nextInt();
+                System.out.print("min speed: ");
+                minSpeed = input.nextInt();
+                System.out.print("max speed: ");
+                maxSpeed = input.nextInt();
+                AbstractAircraft findedAircraft = airline.findAircraftByParameters(minRange, maxRange, minSpeed, maxSpeed);
+                if (findedAircraft == null) {
+                    System.out.println("There is no aircrafts in range of your parameters");
+                    break;
+                } else {
+                    System.out.println("Your finded aircraft: " + findedAircraft);
+                    break;
+                }
+
+            } catch (NumberFormatException exc) {
+                System.out.println("Please, write just numbers!");
+            }
     }
 
 }
