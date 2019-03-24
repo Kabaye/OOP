@@ -9,7 +9,8 @@ import java.util.*;
 
 public class ConsoleOperator {
     public final static String BEGINNING = "Hello! Lets start!";
-    public final static String COMMANDS = "1 --- print info about airline;\n" +
+    public final static String COMMANDS = "Your commands: \n" +
+            "1 --- print info about airline;\n" +
             "2 --- count total capacity and amount of seats;\n" +
             "3 --- sort airline's aircrafts by range;\n" +
             "4 --- search menu;\n" +
@@ -53,6 +54,10 @@ public class ConsoleOperator {
                         case "5": {
                             closeConsole = true;
                             break;
+                        }
+                        default: {
+                            System.out.println("Please, write just menu commands!");
+                            System.out.println(COMMANDS);
                         }
                     }
                 }
