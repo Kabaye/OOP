@@ -62,6 +62,7 @@ public class ConsoleOperator {
                     }
                 }
             }
+        System.out.println("Goodbye!");
         input.close();
     }
 
