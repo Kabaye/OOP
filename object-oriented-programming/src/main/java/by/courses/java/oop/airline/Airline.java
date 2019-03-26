@@ -1,6 +1,6 @@
-package by.courses.java.oop.Airline;
+package by.courses.java.oop.airline;
 
-import by.courses.java.oop.Airline.Aircraft.AbstractAircraft;
+import by.courses.java.oop.airline.aircraft.AbstractAircraft;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ public class Airline {
 
     @Override
     public String toString() {
-        return "Airline {" +
+        return "airline {" +
                 "name of company = '" + nameOfCompany + '\'' +
                 ", location country = '" + locationCountry + '\'' +
                 ", capacity of fleet = " + fleet.size() +

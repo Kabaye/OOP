@@ -1,9 +1,9 @@
-package by.courses.java.oop.Utils;
+package by.courses.java.oop.utils;
 
-import by.courses.java.oop.Airline.Aircraft.AbstractAircraft;
-import by.courses.java.oop.Airline.Aircraft.CargoAircraft;
-import by.courses.java.oop.Airline.Aircraft.PassengerAircraft;
-import by.courses.java.oop.Airline.Airline;
+import by.courses.java.oop.airline.aircraft.AbstractAircraft;
+import by.courses.java.oop.airline.aircraft.CargoAircraft;
+import by.courses.java.oop.airline.aircraft.PassengerAircraft;
+import by.courses.java.oop.airline.Airline;
 
 import java.util.*;
 

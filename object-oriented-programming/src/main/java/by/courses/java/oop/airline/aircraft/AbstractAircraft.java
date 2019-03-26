@@ -1,14 +1,14 @@
-package by.courses.java.oop.Airline.Aircraft;
+package by.courses.java.oop.airline.aircraft;
 
 public abstract class AbstractAircraft {
     private Integer range;
     private Integer maximumSpeed;
     private String model;
-    private PlaneProducer producer;
+    private String producer;
 
     public AbstractAircraft(Integer range, Integer maximumSpeed, String model, String producer) {
         this.range = range;
-        this.producer = PlaneProducer.valueOf(producer.toUpperCase());
+        this.producer = producer;
         this.maximumSpeed = maximumSpeed;
         this.model = model;
     }

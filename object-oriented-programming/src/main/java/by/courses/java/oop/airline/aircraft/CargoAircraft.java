@@ -1,4 +1,4 @@
-package by.courses.java.oop.Airline.Aircraft;
+package by.courses.java.oop.airline.aircraft;
 
 public class CargoAircraft extends AbstractAircraft {
     private Integer cargoCompartmentVolume;
