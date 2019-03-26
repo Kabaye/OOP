@@ -57,5 +57,23 @@ public class ConsoleView {
         input.close();
     }
 
+    public static void searchMenu() {
+        System.out.println(SEARCH);
+    }
 
+    public static void searchParameters(Scanner input, int minRange, int maxRange, int minSpeed, int maxSpeed) throws InputMismatchException {
+        System.out.print("min range: ");
+        minRange = input.nextInt();
+        System.out.print("max range: ");
+        maxRange = input.nextInt();
+        System.out.print("min speed: ");
+        minSpeed = input.nextInt();
+        System.out.print("max speed: ");
+        maxSpeed = input.nextInt();
+    }
+
+    public static void searchError(Scanner input) {
+        System.out.println("Please, write just numbers!");
+        input.nextLine();
+    }
 }
