@@ -2,6 +2,7 @@ package by.courses.java.oop.utils;
 
 import by.courses.java.oop.airline.Airline;
 import by.courses.java.oop.airline.aircraft.CargoAircraft;
+import by.courses.java.oop.airline.aircraft.FireFightingAircraft;
 import by.courses.java.oop.airline.aircraft.PassengerAircraft;
 
 import java.util.InputMismatchException;
@@ -27,6 +28,13 @@ public class ConsoleController {
         airline.addPlaneToPark(new CargoAircraft(4500, 800, "Freighter 747-8F", "Boeing", 3200, 137000));
         airline.addPlaneToPark(new CargoAircraft(7400, 750, "A330-200F", "Airbus", 2000, 70000));
         airline.addPlaneToPark(new CargoAircraft(7800, 780, "A330P2F", "Airbus", 1700, 60000));
+
+        airline.addPlaneToPark(new FireFightingAircraft(750, 400, "144SP", "Tu", 35, true));
+        airline.addPlaneToPark(new FireFightingAircraft(500, 500, "DC-10", "Douglass", 45, false));
+        airline.addPlaneToPark(new FireFightingAircraft(500, 500, "BE-200", "Beriev", 20, true));
+        airline.addPlaneToPark(new FireFightingAircraft(500, 500, "76", "IL", 40, true));
+
+        run();
     }
 
     public void run() {
@@ -45,7 +53,7 @@ public class ConsoleController {
                         break;
                     }
                     case "2": {
-                        add();
+                        add(input);
                         break;
                     }
                     case "3": {
@@ -65,7 +73,7 @@ public class ConsoleController {
                         break;
                     }
                     default: {
-                        ConsoleView.error();
+                        ConsoleView.error(ConsoleView.COMMANDS);
                     }
                 }
             }
@@ -78,8 +86,70 @@ public class ConsoleController {
         ConsoleView.print(airline);
     }
 
-    private void add() {
+    private void add(Scanner input) {
+        ConsoleView.print(ConsoleView.ADD);
+        int type;
+        int range, maxSpeed;
+        String model, producer;
+        boolean addCompleted = false;
+        while (!addCompleted) {
+            try {
+                type = input.nextInt();
+                ConsoleView.print("range = ");
+                range = input.nextInt();
+                ConsoleView.print("maxSpeed = ");
+                maxSpeed = input.nextInt();
+                ConsoleView.print("producer = ");
+                producer = input.next();
+                ConsoleView.print("model = ");
+                model = input.next();
 
+                switch (type) {
+                    case 1: {
+                        int firstClass, secondClass;
+                        ConsoleView.print("first class seats = ");
+                        firstClass = input.nextInt();
+                        ConsoleView.print("second class seats = ");
+                        secondClass = input.nextInt();
+                        airline.addPlaneToPark(new PassengerAircraft(range, maxSpeed, model, producer, firstClass, secondClass));
+                        addCompleted = true;
+                        break;
+                    }
+                    case 2: {
+                        int cargoVolume, capacity;
+                        ConsoleView.print("cargo volume = ");
+                        cargoVolume = input.nextInt();
+                        ConsoleView.print("capacity = ");
+                        capacity = input.nextInt();
+                        airline.addPlaneToPark(new CargoAircraft(range, maxSpeed, model, producer, cargoVolume, capacity));
+                        addCompleted = true;
+                        break;
+                    }
+                    case 3: {
+                        int boilersVolume;
+                        int externBoilerFlag;
+                        boolean externBoiler;
+                        ConsoleView.print("boilers volume = ");
+                        boilersVolume = input.nextInt();
+                        ConsoleView.print("availability to have external boiler (1 or 0) = ");
+                        externBoilerFlag = input.nextInt();
+                        if (externBoilerFlag == 1) {
+                            externBoiler = true;
+                        } else if (externBoilerFlag == 0) {
+                            externBoiler = false;
+                        } else throw new InputMismatchException();
+                        airline.addPlaneToPark(new FireFightingAircraft(range, maxSpeed, model, producer, boilersVolume, externBoiler));
+                        addCompleted = true;
+                        break;
+                    }
+
+                }
+            } catch (InputMismatchException exc) {
+                ConsoleView.error(ConsoleView.ADD);
+                input.nextLine();
+            }
+        }
+        ConsoleView.print("Adding ended!");
     }
 
     private void countTotal() {
@@ -92,23 +162,24 @@ public class ConsoleController {
     }
 
     private void search(Scanner input) {
-        ConsoleView.searchMenu();
+        ConsoleView.print(ConsoleView.SEARCH);
         int minRange, maxRange, minSpeed, maxSpeed;
         while (true)
             try {
-                System.out.print("min range: ");
+                ConsoleView.print("min range: ");
                 minRange = input.nextInt();
-                System.out.print("max range: ");
+                ConsoleView.print("max range: ");
                 maxRange = input.nextInt();
-                System.out.print("min speed: ");
+                ConsoleView.print("min speed: ");
                 minSpeed = input.nextInt();
-                System.out.print("max speed: ");
+                ConsoleView.print("max speed: ");
                 maxSpeed = input.nextInt();
                 ConsoleView.printSearchedAircraft(airline.searchAircraftByParameters(minRange, maxRange, minSpeed, maxSpeed));
                 break;
 
             } catch (InputMismatchException exc) {
-                ConsoleView.searchError(input);
+                ConsoleView.error(ConsoleView.SEARCH);
+                input.nextLine();
             }
     }
 
