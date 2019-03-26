@@ -61,15 +61,15 @@ public class ConsoleView {
         System.out.println(SEARCH);
     }
 
-    public static void searchParameters(Scanner input, int minRange, int maxRange, int minSpeed, int maxSpeed) throws InputMismatchException {
-        System.out.print("min range: ");
-        minRange = input.nextInt();
-        System.out.print("max range: ");
-        maxRange = input.nextInt();
-        System.out.print("min speed: ");
-        minSpeed = input.nextInt();
-        System.out.print("max speed: ");
-        maxSpeed = input.nextInt();
+    public static void printSearchedAircraft(AbstractAircraft aircraft){
+        if (aircraft == null)
+        {
+            System.out.println("There is no such aircraft, which approach selected parameters!");
+        }
+        else
+        {
+            System.out.println("We found this aircraft: " + aircraft);
+        }
     }
 
     public static void searchError(Scanner input) {
