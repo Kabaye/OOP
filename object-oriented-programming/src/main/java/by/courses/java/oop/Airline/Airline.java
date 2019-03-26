@@ -35,9 +35,7 @@ public class Airline {
     }
 
     public List<AbstractAircraft> getAirFleet() {
-        List<AbstractAircraft> copyOfFleet;
-        copyOfFleet = (List<AbstractAircraft>) ((ArrayList<AbstractAircraft>) fleet).clone();
-        return copyOfFleet;
+        return fleet;
     }
 
 
