@@ -13,14 +13,14 @@ public class ConsoleView {
             "3 --- count total capacity and amount of seats;\n" +
             "4 --- sort airline's aircrafts by range;\n" +
             "5 --- search menu;\n" +
-            "6 --- exit;";
+            "6 --- exit;\n";
     public final static String SEARCH = "Please, write min and max speed and range, we will find aircraft, which approach selected parameters";
     public final static String ADD = "Please, choose what type of aircraft you want to add:\n" +
             "1 --- passenger aircraft;\n" +
             "2 --- cargo aircraft;\n" +
             "3 --- fire fighter aircraft. Your choice: ";
 
-    public static void printCommand(String str) {
+    public static void print(String str) {
         System.out.print(str);
     }
 
@@ -37,16 +37,12 @@ public class ConsoleView {
 
     public static void start() {
         System.out.println(BEGINNING);
-        printCommands(COMMANDS);
-    }
-
-    public static void printCommands(String str) {
-        System.out.println(str);
+        print(COMMANDS);
     }
 
     public static void error(String str) {
         System.out.println("Please, write just menu commands!");
-        printCommands(str);
+        print(str);
     }
 
     public static void close(Scanner input) {
