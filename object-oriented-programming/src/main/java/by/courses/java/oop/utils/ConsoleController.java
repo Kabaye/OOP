@@ -1,11 +1,12 @@
 package by.courses.java.oop.utils;
 
 import by.courses.java.oop.airline.Airline;
-import by.courses.java.oop.airline.aircraft.AbstractAircraft;
 import by.courses.java.oop.airline.aircraft.CargoAircraft;
 import by.courses.java.oop.airline.aircraft.PassengerAircraft;
 
-import java.util.*;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class ConsoleController {
     private Airline airline;
@@ -44,7 +45,7 @@ public class ConsoleController {
                         break;
                     }
                     case "2": {
-                        //addMenu
+                        add();
                         break;
                     }
                     case "3": {
@@ -77,22 +78,17 @@ public class ConsoleController {
         ConsoleView.print(airline);
     }
 
+    private void add() {
+
+    }
+
     private void countTotal() {
-        int capacity = 0, amountOfSeats = 0;
-        for (AbstractAircraft elem : airline.getAirFleet()) {
-            if (elem instanceof PassengerAircraft) {
-                amountOfSeats += ((PassengerAircraft) elem).getFirstClassSeats() + ((PassengerAircraft) elem).getSecondClassSeats();
-            } else if (elem instanceof CargoAircraft) {
-                capacity += ((CargoAircraft) elem).getCapacity();
-            }
-        }
-        ConsoleView.printTotal(capacity, amountOfSeats);
+        ConsoleView.printTotal(airline.countTotalCapacity(), airline.countAmountOfSeats());
     }
 
     private void sort() {
-        List<AbstractAircraft> aircrafts = airline.getAirFleet();
-        aircrafts.sort(Comparator.comparing(AbstractAircraft::getRange));
-        ConsoleView.print(aircrafts);
+        airline.sort();
+        ConsoleView.print(airline);
     }
 
     private void search(Scanner input) {
@@ -108,7 +104,7 @@ public class ConsoleController {
                 minSpeed = input.nextInt();
                 System.out.print("max speed: ");
                 maxSpeed = input.nextInt();
-                ConsoleView.printSearchedAircraft(searchAircraftByParameters(airline.getAirFleet(), minRange, maxRange, minSpeed, maxSpeed));
+                ConsoleView.printSearchedAircraft(airline.searchAircraftByParameters(minRange, maxRange, minSpeed, maxSpeed));
                 break;
 
             } catch (InputMismatchException exc) {
@@ -116,12 +112,5 @@ public class ConsoleController {
             }
     }
 
-    private AbstractAircraft searchAircraftByParameters(List<AbstractAircraft> fleet, int minRange, int maxRange, int minSpeed, int maxSpeed) {
-        for (AbstractAircraft elem :
-                fleet) {
-            if (elem.getMaximumSpeed() <= maxSpeed && elem.getMaximumSpeed() >= minSpeed && elem.getRange() >= minRange && elem.getRange() <= maxRange)
-                return elem;
-        }
-        return null;
-    }
+
 }
