@@ -25,19 +25,9 @@ public class Airline {
                 " units}";
     }
 
-    public String getStringOfFleetUnits()
-    {
-        StringBuilder buffer  = new StringBuilder();
-        for (AbstractAircraft elem: fleet) {
-            buffer.append(elem.toString() + "\n");
-        }
-        return buffer.toString();
-    }
-
     public List<AbstractAircraft> getAirFleet() {
         return fleet;
     }
-
 
     public String getNameOfCompany() {
         return nameOfCompany;
@@ -47,15 +37,6 @@ public class Airline {
         return locationCountry;
     }
 
-    public AbstractAircraft findAircraftByParameters(int minRange, int maxRange, int minSpeed, int maxSpeed){
-        for (AbstractAircraft elem: fleet) {
-            if (elem.getRange()>=minRange && elem.getRange()<=maxRange && elem.getMaximumSpeed()>=minSpeed && elem.getMaximumSpeed()<=maxSpeed){
-                return elem;
-            }
-        }
-        return null;
-    }
-
     public boolean addPlaneToPark(AbstractAircraft aircraft) {
         if (aircraft != null) {
             fleet.add(aircraft);
@@ -63,6 +44,4 @@ public class Airline {
         }
         return false;
     }
-
-
 }
