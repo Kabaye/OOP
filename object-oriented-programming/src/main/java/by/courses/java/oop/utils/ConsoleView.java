@@ -25,11 +25,7 @@ public class ConsoleView {
 
     public static void print(Airline airline) {
         System.out.println(airline);
-        print(airline.getAirFleet());
-    }
-
-    public static void print(List<AbstractAircraft> fleet) {
-        for (AbstractAircraft elem : fleet) {
+        for (AbstractAircraft elem : airline.getAirFleet()) {
             System.out.println(elem);
         }
     }
