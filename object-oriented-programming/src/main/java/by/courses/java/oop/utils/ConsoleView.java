@@ -20,6 +20,9 @@ public class ConsoleView {
             "2 --- cargo aircraft;\n" +
             "3 --- fire fighter aircraft. Your choice: ";
 
+    public static void printCommand(String str) {
+        System.out.print(str);
+    }
 
     public static void print(Airline airline) {
         System.out.println(airline);
