@@ -28,7 +28,7 @@ public abstract class AbstractAircraft {
     @Override
     public String toString() {
         return "plane {" +
-                "producer = '" + producer.toString().toLowerCase() + '\'' +
+                "producer = '" + producer + '\'' +
                 ", model = '" + model + '\'' +
                 ", range = " + range +
                 " km, maximum speed = " + maximumSpeed +
